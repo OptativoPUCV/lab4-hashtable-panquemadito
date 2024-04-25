@@ -172,8 +172,8 @@ Pair *nextMap(HashMap *map) {
   if (map == NULL || map->current == -1 || map->size == 0)
     return NULL;
 
-  long start = map->current;
-  long index = start;
+  long count = 0;
+  long index = map->current;
 
   do {
     index = (index + 1) % map->capacity;
@@ -181,10 +181,8 @@ Pair *nextMap(HashMap *map) {
       map->current = index;
       return map->buckets[index];
     }
-    if (index == start) {
-      break;
-    }
-  } while (index != start);
+    count++;
+  } while (count < map->capacity);
 
   map->current = -1;
   return NULL;
