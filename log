@@ -346,3 +346,21 @@ Thu 25 Apr 2024 02:49:38 PM UTC:
  tests:  16|1
 total_score: 60/70
 174b1ad
+Thu 25 Apr 2024 02:56:05 PM UTC: 
+ hashmap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:181:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+  181 |   for (long  i < startIndex; i < map->current ; i++) {
+      |                ^
+hashmap.c:181:30: error: ‘i’ undeclared (first use in this function)
+  181 |   for (long  i < startIndex; i < map->current ; i++) {
+      |                              ^
+hashmap.c:181:30: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:181:46: error: expected ‘)’ before ‘;’ token
+  181 |   for (long  i < startIndex; i < map->current ; i++) {
+      |       ~                                      ^~
+      |                                              )
+Compilation failed
+19bf1b2
