@@ -170,20 +170,20 @@ Pair * firstMap(HashMap * map) {
 Pair * nextMap(HashMap * map) {
   if (map == NULL || map->current == -1 || map->size == 0) return NULL;
 
-  long start = map->current;
-  long index = map->current;
-  do {
-      index = (index + 1) % map->capacity;
-      if (index == start) {
-        map->current = -1;
-        return NULL;
-      }
-      if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
-        map->current = index;
-        return map->buckets[index];
-      }
-    } while (index != start);
-
-    map->current = -1;
-    return NULL;
+  long startIndex = map->current + 1;
+  for (long i = startIndex; i < map->capacity; i++) {
+    if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+      map->current = i;
+      return map->buckets[i];
+    }
   }
+  for (long i = 0; i < startIndex; i++) {
+    if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+      map->current = i;
+      return map->buckets[i];
+    }
+  }
+
+  map->current = -1;
+  return NULL;
+}
