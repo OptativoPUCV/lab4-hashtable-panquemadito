@@ -172,17 +172,17 @@ Pair * nextMap(HashMap * map) {
 
   long start = map->current;
   long index = start;
+  
   do {
-      index = (index + 1) % map->capacity;
-      if (index == start) {
-        map->current = -1;
-        return NULL;
-      }
-      if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
-        map->current = index;
-        return map->buckets[index];
-      }
-    } while (index != start);
+    index = (index + 1) % map->capacity;  
+    if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
+      map->current = index;
+      return map->buckets[index];
+    }
+    if (index == start) {
+      break;
+    }
+  } while (index != start);
 
     map->current = -1;
     return NULL;
