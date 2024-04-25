@@ -84,3 +84,9 @@ hashmap.c:54:28: error: ‘Pair’ has no member named ‘next’
       |                            ^~
 Compilation failed
 4ae40af
+Thu 25 Apr 2024 03:20:14 AM UTC: 
+ hashmap.c | 35 -----------------------------------
+ 1 file changed, 35 deletions(-)
+ tests:  0|6
+total_score: 0/70
+f09b3cd
