@@ -69,9 +69,9 @@ void insertMap(HashMap * map, char * key, void * value) {
 }
 
 void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
   if (map == NULL) return;
-
+  enlarge_called = 1; //no borrar (testing purposes)
+  
   long old_capacity = map->capacity ;
   map->capacity *=2;
   Pair **old_buckets = map->buckets;
@@ -82,19 +82,10 @@ void enlarge(HashMap * map) {
     return;
   }
 
-  map->size = 0;
   for (long i = 0; i < old_capacity; i++) {
     if (old_buckets[i] != NULL && old_buckets[i]->key != NULL) {
       insertMap(map,old_buckets[i]->key, old_buckets[i]->value);
-      free(old_buckets[i]->key);
       free(old_buckets[i]) ;
-    }
-  }
-  map->current = -1;
-
-  for (long i = 0; i < map->capacity /2 ; i++) {
-    if (old_buckets[i] != NULL) {
-      insertMap(map, old_buckets[i]->key,old_buckets[i]->value) ;
     }
   }
   free(old_buckets) ;
@@ -174,15 +165,14 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  if (map == NULL) {
-    return NULL;
-  }
-  map->current = (map->current + 1) % map->capacity;
+  if (map == NULL || map->current == -1) return NULL;
 
-  while(map->buckets[map->current] == NULL || is_equal(map->buckets[map->current]->key,NULL)) {
+  long start = map->current;
+  do {
     map->current = (map->current + 1) % map->capacity;
-  }
-  return map->buckets[map->current] ;
-
-    return NULL;
+    if(map->buckets[map->current] != NULL && map->buckets[map->current]->key !=NULL) {
+       return map->buckets[map->current] ;
+    }
+  } while (map->current != start); 
+  return NULL;
 }
