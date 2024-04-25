@@ -171,3 +171,23 @@ Thu 25 Apr 2024 03:48:33 AM UTC:
  tests:  12|2
 total_score: 50/70
 71f13b7
+Thu 25 Apr 2024 03:52:56 AM UTC: 
+ hashmap.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:84:22: error: ‘n’ undeclared (first use in this function); did you mean ‘yn’?
+   84 |   free(old_buckets) ;n\
+      |                      ^~
+   85 | 
+      |                       
+hashmap.c:84:22: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:85:1: error: expected ‘;’ before ‘}’ token
+   85 | 
+      | ^
+      | ;
+   86 | 
+   87 | }
+      | ~
+Compilation failed
+6638c9a
