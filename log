@@ -245,3 +245,15 @@ hashmap.c:89:42: error: ‘oold_buckets’ undeclared (first use in this functio
       |                                          old_buckets
 Compilation failed
 7b0b363
+Thu 25 Apr 2024 01:32:15 PM UTC: 
+ hashmap.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:88:42: error: ‘oold_buckets’ undeclared (first use in this function); did you mean ‘old_buckets’?
+   88 |       insertMap(map,old_buckets[i]->key, oold_buckets[i]->value);
+      |                                          ^~~~~~~~~~~~
+      |                                          old_buckets
+hashmap.c:88:42: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+ceb40a1
