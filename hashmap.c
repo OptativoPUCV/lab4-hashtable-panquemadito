@@ -150,6 +150,9 @@ Pair * firstMap(HashMap * map) {
   if (map == NULL) {
     return NULL;
   }
+  if (map->size == 0) {
+    return NULL;
+  }
   map->current = -1;
   return nextMap(map) ;
 }
