@@ -90,3 +90,23 @@ Thu 25 Apr 2024 03:20:14 AM UTC:
  tests:  0|6
 total_score: 0/70
 f09b3cd
+Thu 25 Apr 2024 03:24:31 AM UTC: 
+ hashmap.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:63:27: error: expected ‘;’ before ‘map’
+   63 |   map->capacity = capacity
+      |                           ^
+      |                           ;
+   64 |   map->size = 0;
+      |   ~~~                      
+hashmap.c:67:27: error: too many arguments to function ‘malloc’
+   67 |   map->buckets = (Pair **)malloc(capacity, sizeof(Pair *));
+      |                           ^~~~~~
+In file included from test.c:2:
+/nix/store/4pqv2mwdn88h7xvsm7a5zplrd8sxzvw0-glibc-2.35-163-dev/include/stdlib.h:540:14: note: declared here
+  540 | extern void *malloc (size_t __size) __THROW __attribute_malloc__
+      |              ^~~~~~
+Compilation failed
+3a3a7d3
