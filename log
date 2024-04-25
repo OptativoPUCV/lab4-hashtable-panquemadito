@@ -74,3 +74,13 @@ hashmap.c:50:8: error: expected ‘(’ before ‘is_equal’
       |        (
 Compilation failed
 7529a20
+Thu 25 Apr 2024 03:07:20 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:54:28: error: ‘Pair’ has no member named ‘next’
+   54 |     if (map->buckets[index]->next == NULL) {
+      |                            ^~
+Compilation failed
+4ae40af
