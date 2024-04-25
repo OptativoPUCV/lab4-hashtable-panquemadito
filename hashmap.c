@@ -175,9 +175,10 @@ Pair * nextMap(HashMap * map) {
   do {
     index = (index + 1) % map->capacity;
     if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
-      map->current = -1;
+      map->current = index;
       return map->buckets[index] ;
     }
   } while (index != start) ;
+  map->current = -1;
   return NULL;
 }
