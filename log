@@ -116,3 +116,34 @@ Thu 25 Apr 2024 03:25:14 AM UTC:
  tests:  1|5
 total_score: 10/70
 f2d42d8
+Thu 25 Apr 2024 03:30:12 AM UTC: 
+ hashmap.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:37: error: implicit declaration of function ‘_strdup’; did you mean ‘strdup’? [-Werror=implicit-function-declaration]
+   51 |       map->buckets[position]->key = _strdup(key) ;
+      |                                     ^~~~~~~
+      |                                     strdup
+hashmap.c:51:35: error: assignment to ‘char *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   51 |       map->buckets[position]->key = _strdup(key) ;
+      |                                   ^
+hashmap.c:61:39: error: passing argument 1 of ‘createPair’ makes pointer from integer without a cast [-Werror=int-conversion]
+   61 |   map->buckets[position] = createPair(_strdup(key), value) ;
+      |                                       ^~~~~~~~~~~~
+      |                                       |
+      |                                       int
+hashmap.c:19:27: note: expected ‘char *’ but argument is of type ‘int’
+   19 | Pair * createPair( char * key,  void * value) {
+      |                    ~~~~~~~^~~
+test.c: At top level:
+test.c:8:8: error: conflicting types for ‘_strdup’; have ‘char *(const char *)’
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+In file included from test.c:4:
+hashmap.c:51:37: note: previous implicit declaration of ‘_strdup’ with type ‘int()’
+   51 |       map->buckets[position]->key = _strdup(key) ;
+      |                                     ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+7ed4225
