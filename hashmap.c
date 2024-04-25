@@ -118,11 +118,23 @@ Pair * searchMap(HashMap * map,  char * key) {
 }
 
 Pair * firstMap(HashMap * map) {
-
+  if (map == NULL) {
     return NULL;
+  }
+  map->current = -1;
+  return nextMap(map) ;
 }
 
 Pair * nextMap(HashMap * map) {
+  if (map == NULL) {
+    return NULL;
+  }
+  map->current = (map->current + 1) % map->capacity;
+
+  while(map->buckets[map->current] == NULL || is_equal(map->buckets[map->current]->key,NULL)) {
+    map->current = (map->current + 1) % map->capacity;
+  }
+  return map->buckets[map->current] ;
 
     return NULL;
 }
