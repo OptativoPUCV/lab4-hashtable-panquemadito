@@ -158,8 +158,16 @@ Pair * firstMap(HashMap * map) {
   if (map->size == 0) {
     return NULL;
   }
+  long i = 0;
+  while (i< map->capacity) {
+    if (map->buckets[i] != NULL && is_equal(map->buckets[i]->key, NULL) == 0) {\
+      map->current = i;
+      return map->buckets[i];
+    }
+    i++;
+  }
   map->current = -1;
-  return nextMap(map) ;
+  return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
