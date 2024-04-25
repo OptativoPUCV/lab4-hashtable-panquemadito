@@ -63,3 +63,14 @@ test.c:100:6: error: ‘hash_test1’ defined but not used [-Werror=unused-funct
 cc1: all warnings being treated as errors
 Compilation failed
 c025c78
+Thu 25 Apr 2024 03:06:43 AM UTC: 
+ hashmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:50:8: error: expected ‘(’ before ‘is_equal’
+   50 |     if is_equal(map->buckets[index]->key, key) {
+      |        ^~~~~~~~
+      |        (
+Compilation failed
+7529a20

@@ -47,7 +47,7 @@ void insertMap(HashMap * map, char * key, void * value) {
   long index = hash(key, map->capacity) ;
 
   while (map->buckets[index] != NULL) {
-    if (is_equal(map->buckets[index]->key, key) {
+    if is_equal(map->buckets[index]->key, key) {
       map->buckets[index]->value = value ;
       return;
     }
@@ -56,7 +56,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     }
     index = (index + 1) % map->capacity;
   }
-  map->buckets[index] = createPair(_strdup(key), value);
+  map->buckets[index] = createPair(strdup(key), value);
   map->size++;
   map->current = index ;
 }
@@ -73,7 +73,7 @@ HashMap * createMap(long capacity) {
     return NULL;
   }
   
-  HashMap * map = (HashMap  *)malloc(sizeof(HashMap) ;
+  HashMap * map = (HashMap  *)malloc(sizeof(HashMap)) ;
   if (map == NULL) {
     return NULL;
   }
