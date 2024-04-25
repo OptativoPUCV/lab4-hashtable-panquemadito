@@ -171,11 +171,11 @@ Pair * nextMap(HashMap * map) {
   if (map == NULL || map->current == -1 || map->size == 0) return NULL;
 
   long start = map->current;
-  long index = map->current;
+  long index = start;
   do {
     index = (index + 1) % map->capacity;
-    if(map->buckets[index] != NULL && map->buckets[index]->key !=NULL) {
-      map->current = index;
+    if (map->buckets[index] != NULL && map->buckets[index]->key != NULL) {
+      map->current = -1;
       return map->buckets[index] ;
     }
   } while (index != start) ;
