@@ -177,6 +177,7 @@ Pair * nextMap(HashMap * map) {
       return map->buckets[i];
     }
   }
+  map->current = -1;
   startIndex = 0;
   for (long  i = startIndex; i < map->current ; i++) {
     if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
