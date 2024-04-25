@@ -58,6 +58,13 @@ void insertMap(HashMap * map, char * key, void * value) {
     }
     position = (position + 1) % map->capacity;
   }
+  if (map->size == 0) {
+    map->buckets = (Pair **) calloc(map->capacity,sizeof(Pair *)) ;
+    if (map->buckets == NULL) {
+      free(map) ;
+      return;
+    }
+  }
   map->buckets[position] = createPair(strdup(key), value) ;
   map->size++ ;
   map->current = position ;
@@ -98,7 +105,7 @@ HashMap * createMap(long capacity) {
   map->size = 0;
   map->current = -1 ;
 
-  map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
+  map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
   if (map->buckets == NULL) {
     free(map);
     return NULL;
