@@ -1,0 +1,65 @@
+Thu 25 Apr 2024 03:00:23 AM UTC: 
+ hashmap.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:50:48: error: expected ‘)’ before ‘{’ token
+   50 |     if (is_equal(map->buckets[index]->key, key) {
+      |        ~                                       ^~
+      |                                                )
+hashmap.c:58:3: error: expected expression before ‘}’ token
+   58 |   }
+      |   ^
+hashmap.c:59:36: error: implicit declaration of function ‘_strdup’; did you mean ‘strdup’? [-Werror=implicit-function-declaration]
+   59 |   map->buckets[index] = createPair(_strdup(key), value);
+      |                                    ^~~~~~~
+      |                                    strdup
+hashmap.c:59:36: error: passing argument 1 of ‘createPair’ makes pointer from integer without a cast [-Werror=int-conversion]
+   59 |   map->buckets[index] = createPair(_strdup(key), value);
+      |                                    ^~~~~~~~~~~~
+      |                                    |
+      |                                    int
+hashmap.c:19:27: note: expected ‘char *’ but argument is of type ‘int’
+   19 | Pair * createPair( char * key,  void * value) {
+      |                    ~~~~~~~^~~
+hashmap.c: In function ‘createMap’:
+hashmap.c:76:53: error: expected ‘)’ before ‘;’ token
+   76 |   HashMap * map = (HashMap  *)malloc(sizeof(HashMap) ;
+      |                                     ~               ^~
+      |                                                     )
+hashmap.c:92:1: error: expected ‘,’ or ‘;’ before ‘}’ token
+   92 | }
+      | ^
+test.c:453:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  453 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:511:1: error: expected declaration or statement at end of input
+  511 | }
+      | ^
+In file included from test.c:4:
+hashmap.c:76:13: error: unused variable ‘map’ [-Werror=unused-variable]
+   76 |   HashMap * map = (HashMap  *)malloc(sizeof(HashMap) ;
+      |             ^~~
+test.c:512: error: control reaches end of non-void function [-Werror=return-type]
+At top level:
+test.c:453:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  453 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:217:5: error: ‘insert_test5’ defined but not used [-Werror=unused-function]
+  217 | int insert_test5(){ //factor de carga>0.7, se llama a función enlarge
+      |     ^~~~~~~~~~~~
+test.c:131:6: error: ‘compare_test’ defined but not used [-Werror=unused-function]
+  131 | void compare_test(){
+      |      ^~~~~~~~~~~~
+test.c:125:6: error: ‘hash_test3’ defined but not used [-Werror=unused-function]
+  125 | void hash_test3(){ //no random
+      |      ^~~~~~~~~~
+test.c:111:6: error: ‘hash_test2’ defined but not used [-Werror=unused-function]
+  111 | void hash_test2(){ // colisiones
+      |      ^~~~~~~~~~
+test.c:100:6: error: ‘hash_test1’ defined but not used [-Werror=unused-function]
+  100 | void hash_test1(){ // posición válida
+      |      ^~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+c025c78
