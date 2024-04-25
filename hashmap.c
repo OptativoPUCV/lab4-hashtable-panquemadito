@@ -60,11 +60,11 @@ HashMap * createMap(long capacity) {
   if (map == NULL) {
     return NULL;
   }
-  map->capacity = capacity
+  map->capacity = capacity;
   map->size = 0;
   map->current = -1 ;
 
-  map->buckets = (Pair **)malloc(capacity, sizeof(Pair *));
+  map->buckets = (Pair **)calloc(capacity, sizeof(Pair *));
   if (map->buckets == NULL) {
     free(map);
     return NULL;
