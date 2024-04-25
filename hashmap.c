@@ -45,29 +45,27 @@ void insertMap(HashMap * map, char * key, void * value) {
   }
 
   long position = hash(key,map->capacity) ;
-  while (map->buckets[position] != NULL ) {
+  int rehash_count = 0;
+  
+  while (map->buckets[position] != NULL && rehash_count < map->capacity) {
     if (is_equal(map->buckets[position]->key, key)) {
       free (map->buckets[position]->key);
       map->buckets[position]->key = strdup(key) ;
       map->buckets[position]->value = value ;
-
-      map->size++ ;
-      map->current = position ;
-
       return;
     }
     position = (position + 1) % map->capacity;
+    rehash_count++;
   }
-  if (map->size == 0) {
-    map->buckets = (Pair **) calloc(map->capacity,sizeof(Pair *)) ;
-    if (map->buckets == NULL) {
-      free(map) ;
-      return;
-    }
+  if (rehash_count == map->capacity) {
+    enlarge(map) ;
+    insertMap(map,key,value) ;
+  } else {
+
+    map->buckets[position] = createPair(strdup(key), value) ;
+    map->size++ ;
+    map->current = position ;
   }
-  map->buckets[position] = createPair(strdup(key), value) ;
-  map->size++ ;
-  map->current = position ;
 }
 
 void enlarge(HashMap * map) {
