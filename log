@@ -221,3 +221,27 @@ Thu 25 Apr 2024 04:33:31 AM UTC:
  1 file changed, 9 insertions(+), 1 deletion(-)
  tests:  0|0
 4528333
+Thu 25 Apr 2024 01:30:50 PM UTC: 
+ hashmap.c | 41 +++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:76:3: error: expected ‘,’ or ‘;’ before ‘map’
+   76 |   map->capacity *=2;
+      |   ^~~
+hashmap.c:83:4: error: expected statement before ‘)’ token
+   83 |   })
+      |    ^
+hashmap.c:86:7: error: expected expression before ‘long’
+   86 |   if (long i = 0; i < old_capacity; i++) {
+      |       ^~~~
+hashmap.c:88:21: error: ‘i’ undeclared (first use in this function)
+   88 |     if (old_buckets[i] != NULL && old_buckets[i]->key != NULL) {
+      |                     ^
+hashmap.c:88:21: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:89:42: error: ‘oold_buckets’ undeclared (first use in this function); did you mean ‘old_buckets’?
+   89 |       insertMap(map,old_buckets[i]->key, oold_buckets[i]->value);
+      |                                          ^~~~~~~~~~~~
+      |                                          old_buckets
+Compilation failed
+7b0b363
